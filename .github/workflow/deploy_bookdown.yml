@@ -1,0 +1,42 @@
+on:
+  push:
+    branches:
+      - master
+
+name: Deploy Bookdown
+
+jobs:
+  bookdown:
+    name: Render
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@v1
+      - uses: r-lib/actions/setup-pandoc@v1
+      - name: Install rmarkdown
+        run: Rscript -e 'install.packages(c("rmarkdown","bookdown"))'
+      - name: Render Book
+        run: Rscript -e 'bookdown::render_book("index.Rmd")'
+      - uses: actions/upload-artifact@v1
+        with:
+          name: _book
+          path: _book/
+  
+  checkout-deploy:
+    runs-on: ubuntu-latest
+    needs: bookdown
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Downoad artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: _book
+          path: _book/
+      - name: Deploy to GH Pages
+        uses: Cecilapp/GitHub-Pages-deploy@master
+        env:
+          EMAIL: ${{secrets.EMAIL}}
+          GH_TOKEN: ${{secrets.GH_PAT}}
+          BUILD_DIR: _book/
+          
