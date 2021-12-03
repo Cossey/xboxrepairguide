@@ -17,11 +17,11 @@ jobs:
       - name: Install rmarkdown
         run: Rscript -e 'install.packages(c("rmarkdown","bookdown"))'
       - name: Build HTML
-        run: Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::gitbook', params=list(var='varcmd1234'))"
+        run: Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::gitbook', params = list(var = 'varcmd1234'))"
       - name: Build ePub
-        run: Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::epub_book', params=list(var='varcmd1234'))"
+        run: Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::epub_book', params = list(var = 'varcmd1234'))"
       - name: Build PDF
-        run: Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::pdf_book', params=list(var='varcmd1234'))"
+        run: Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::pdf_book', params = list(var = 'varcmd1234'))"
       - uses: actions/upload-artifact@v1
         with:
           name: Book
