@@ -24,7 +24,7 @@ jobs:
         run: Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::pdf_book')"
       - uses: actions/upload-artifact@v1
         with:
-          name: _book
+          name: Book
           path: _book/
   
   checkout-deploy:
@@ -36,13 +36,12 @@ jobs:
       - name: Downoad artifact
         uses: actions/download-artifact@v1
         with:
-          name: _book
+          name: Book
           path: _book/
       - name: Deploy to GH Pages
-        uses: Cecilapp/GitHub-Pages-deploy@v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: JamesIves/github-pages-deploy-action@4.1.7
         with:
-          EMAIL: ${{secrets.EMAIL}}
-          BUILD_DIR: _book/
+          branch: gh-pages
+          folder: _book/
+          target-folder: latest
           
