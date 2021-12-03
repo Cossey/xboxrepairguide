@@ -1,5 +1,6 @@
-book_filename: "bookdown-demo"
+book_filename: "xboxrepairguide"
 language:
   ui:
     chapter_name: "Chapter "
 delete_merged_file: true
+edit: https://github.com/cossey/xboxrepairguide/edit/master/%s
