@@ -8,6 +8,8 @@ documentclass: book
 link-citations: yes
 github-repo: cossey/xboxrepairguide
 description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
+params:
+  var: d
 ---
 
 # Prerequisites
