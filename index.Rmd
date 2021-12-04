@@ -1,5 +1,5 @@
 --- 
-title: "Xbox Repair Guide"
+title: "Xbox Repair Guide `r params$var`"
 author: "Xbox Community"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
