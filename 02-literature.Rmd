@@ -2,4 +2,5 @@
 
 Here is a review of existing methods.
 
-%appdata%
+Locashun: %appdata%\test  
+Hffg: %vear%\test\aap.cfg
