@@ -17,11 +17,11 @@ jobs:
       - name: Install rmarkdown
         run: Rscript -e 'install.packages(c("rmarkdown","bookdown"))'
       - name: Build HTML
-        run: Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::gitbook', clean_envir = FALSE, params = list(var = '2.1.0.0'))"
+        run: Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::gitbook', clean_envir = FALSE, params = list(var = '${{ github.ref_name }}'))"
       - name: Build ePub
-        run: Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::epub_book', clean_envir = FALSE, params = list(var = '2.1.0.0'))"
+        run: Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::epub_book', clean_envir = FALSE, params = list(var = '${{ github.ref_name }}'))"
       - name: Build PDF
-        run: Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::pdf_book', clean_envir = FALSE, params = list(var = '2.1.0.0'))"
+        run: Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::pdf_book', clean_envir = FALSE, params = list(var = '${{ github.ref_name }}'))"
       - uses: actions/upload-artifact@v1
         with:
           name: Book
