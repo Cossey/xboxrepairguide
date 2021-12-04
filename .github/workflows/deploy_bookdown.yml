@@ -19,9 +19,9 @@ jobs:
       - name: Build HTML
         run: Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::gitbook', clean_envir = FALSE, params = list(var = 'varcmd1234'))"
       - name: Build ePub
-        run: Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::epub_book')"
+        run: Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::epub_book', clean_envir = FALSE, params = list(var = 'varcmd1234'))"
       - name: Build PDF
-        run: Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::pdf_book')"
+        run: Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::pdf_book', clean_envir = FALSE, params = list(var = 'varcmd1234'))"
       - uses: actions/upload-artifact@v1
         with:
           name: Book
